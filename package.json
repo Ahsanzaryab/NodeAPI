@@ -1,0 +1,24 @@
+{
+  "name": "backend-api",
+  "version": "1.0.0",
+  "description": "Sample backend api using node and postgres",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "ahsan",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mocha": "^10.0.0",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.21.3",
+    "should": "^13.2.3",
+    "supertest": "^6.2.4"
+  }
+}
