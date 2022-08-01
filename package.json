@@ -4,7 +4,8 @@
   "description": "Sample backend api using node and postgres",
   "main": "app.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "precommit": "test"
   },
   "author": "ahsan",
   "license": "ISC",
@@ -20,5 +21,8 @@
     "sequelize": "^6.21.3",
     "should": "^13.2.3",
     "supertest": "^6.2.4"
+  },
+  "devDependencies": {
+    "pre-commit": "^1.2.2"
   }
 }
