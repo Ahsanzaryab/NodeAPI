@@ -10,6 +10,7 @@ const pool = new Pool({
   port: 5432
 })
 
+let num;
 let chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 var should = chai.should();
@@ -43,41 +44,53 @@ describe("SAMPLE unit test",function(){
 
 });
 
+describe('Get all Movies', () => {
+  pool.query('SELECT COUNT(*) FROM movies_list', (error, results) => 
+      {
+      num = parseInt(results.rows[0]["count"]);
+      // console.log(num);
+      }); 
+      
+it('it should GET all the movies', (done) => {
 
-describe('Get/Post Movies', () => {
+
+   
+  server
+      .get('/movies')
+      .end((err, res) => {
+            res.should.have.status(200);
+            res.body.should.be.a('array');
+            // console.log((res.body));
+            parseInt(res.body.length).should.be.equals(num);
+        done();
+      })
+  });
+});
+
+
+describe('Post a Movie', () => {
   
-  it('it should POST a movie ', async () => {
+  it('it should POST a movie ',  (done)=>{
     let book = {
         name: "The Lord of the Rings",
         rating: '10.0'
         
     }
-  server
+    server
       .post('/addmovie')
       .send(book)
       .end((err, res) => {
+            if (err) done(err);
             res.should.have.status(200);
             res.body.should.be.a('object');
             res.body.book.should.have.property('name');
             res.body.book.should.have.property('rating');
-        
+                
       })
+      
+      done();  
+      
    })
 
-   it('it should GET all the movies', (done) => {
-    let num;
-    pool.query('SELECT COUNT(*) FROM movies_list', (error, results) => 
-    {
-    num =parseInt(results.rows[0]["count"]);
-    });
-    
-    server
-        .get('/movies')
-        .end((err, res) => {
-              res.should.have.status(200);
-              res.body.should.be.a('array');
-              res.body.length.should.be.eql(num);
-          done();
-        })
-  });
 });
+
