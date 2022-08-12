@@ -1,3 +1,4 @@
+
 {
   "name": "backend-api",
   "version": "1.0.0",
@@ -5,7 +6,7 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha --timeout 4000 --exit",
-    "precommit": "test"
+    
   },
   "author": "ahsan",
   "license": "ISC",
