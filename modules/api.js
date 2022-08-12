@@ -1,7 +1,7 @@
 
  
   // DB connection 
-  // logging in as a specific user and database Command : psql -d db -U user
+  // log in as a specific user and database Command : psql -d db -U user
   const Pool = require('pg').Pool;
 
   const pool = new Pool({
